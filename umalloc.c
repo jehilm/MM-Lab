@@ -13,6 +13,7 @@ const char author[] = ANSI_BOLD ANSI_COLOR_RED "Jehil Mehta jjm5794" ANSI_RESET;
 
 // A sample pointer to the start of the free list.
 memory_block_t *free_head;
+memory_block_t *heap_head;
 
 /*
  * is_allocated - returns true if a block is marked as allocated.
