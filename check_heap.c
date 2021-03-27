@@ -15,15 +15,15 @@ int check_heap() {
     temp = free_head;
 
     //checking if every block in free list is marked as free
-    while(temp->next != NULL) {
-        temp = temp->next;
+    while(temp != NULL) {
         if(is_allocated(temp)) {
             return 1;
         }
+        temp = temp->next;
     }
 
     // checking if every free block is on the free list
-    temp = heap_head;
+    /*temp = heap_head;
     while(temp->next != NULL) {
         temp = temp->next;
         if(!is_allocated(temp)) {
@@ -61,5 +61,6 @@ int check_heap() {
             }
         }
     }
+    return 0;*/
     return 0;
 }

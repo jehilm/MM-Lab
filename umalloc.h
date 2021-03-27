@@ -3,6 +3,7 @@
 
 #define ALIGNMENT 16 /* The alignment of all payloads returned by umalloc */
 #define ALIGN(size) (((size) + (ALIGNMENT-1)) & ~(ALIGNMENT-1))
+#define HEADER_SIZE 16
 
 /*
  * memory_block_t - Represents a block of memory managed by the heap. The 
@@ -21,10 +22,15 @@ bool is_allocated(memory_block_t *block);
 void allocate(memory_block_t *block);
 void deallocate(memory_block_t *block);
 size_t get_size(memory_block_t *block);
-memory_block_t *get_next(memory_block_t *block);
+memory_block_t *get_next_free(memory_block_t *block);
 void put_block(memory_block_t *block, size_t size, bool alloc);
 void *get_payload(memory_block_t *block);
 memory_block_t *get_block(void *payload);
+memory_block_t *next_block(memory_block_t *block);
+void remove_free(memory_block_t *block);
+void address_insert_free(memory_block_t *block);
+
+
 
 memory_block_t *find(size_t size);
 memory_block_t *extend(size_t size);
